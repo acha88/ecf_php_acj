@@ -1,0 +1,37 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+a {
+    text-decoration: none;
+    color: whitesmoke;
+}
+header,
+footer {
+    background-color: black;
+    color: white;
+    padding: 2%;
+}
+main {
+    height: 74vh;
+}
+.crudContact {
+    display: flex;
+    flex-direction: row;
+}
+
+.btn-add {
+    color: black;
+    padding: 1%;
+    margin-left: 5%;
+}
+.contact_card {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+._card {
+    padding: 2%;
+    border: 2px black solid;
+    margin: 5% 2%;
+}
