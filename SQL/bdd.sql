@@ -14,7 +14,7 @@ CREATE TABLE categories(
    id_cat SERIAL,
    nom_cat VARCHAR(50) NOT NULL,
    libelle_cat VARCHAR(250) NOT NULL,
-   code_cat DECIMAL(5,0) NOT NULL,
+   code_cat DECIMAL(10,0) NOT NULL,
    valeur_point_cat DECIMAL(5,0),
    PRIMARY KEY(id_cat)
 );

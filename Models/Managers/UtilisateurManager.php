@@ -15,7 +15,7 @@ class UtilisateurManager
         $results = $stmt->fetchAll(PDO::FETCH_CLASS, 'Utilisateurs');
     }
 
-    public static function insertUtilisateur(String $email, String $password, String $nom, String $prenom, String $datenaissance)
+    public static function addUtilisateur(String $email, String $password, String $nom, String $prenom, String $datenaissance)
     {
         $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
         $pdo = dbconnect();

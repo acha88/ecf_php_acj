@@ -6,9 +6,9 @@ class Categories
 
     private String $nomCat;
 
-    private decimal $codeCat;
+    private String $codeCat;
 
-    private decimal $valeurPointCat;
+    private  int $valeurPointCat;
 
 
     /* public function __construct(String $nomCat)
@@ -27,12 +27,12 @@ class Categories
         return $this->nomCat;
     }
 
-    public function getCodeCat(): decimal
+    public function getCodeCat(): String
     {
         return $this->codeCat;;
     }
 
-    public function getValeurPointCat(): decimal
+    public function getValeurPointCat(): int
     {
         return $this->valeurPointCat;
     }
