@@ -9,22 +9,24 @@ class UtilisateurManager
     public static function afficheUtilisateur()
     {
         $pdo = dbconnect(); 
-        $sql = "SELECT * FROM utilisateurs";
+        $sql = "SELECT * FROM public.utilisateurs";
         $stmt = $pdo->prepare($sql); 
         $stmt->execute(); 
         $results = $stmt->fetchAll(PDO::FETCH_CLASS, 'Utilisateurs');
+        return $results;
     }
 
-    public static function addUtilisateur(String $email, String $password, String $nom, String $prenom, String $datenaissance)
+    public static function addUtilisateur(String $nom, String $prenom, String $datenaissance, String $email, String $password)
     {
         $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
         $pdo = dbconnect();
-        $sql = "INSERT INTO utilisateurs (email_uti, password, nom_uti, prenom_uti, datenaissance_uti) VALUES (:nom, :prenom, :email, :password, :datenaissance)";
+        $sql = "INSERT INTO public.utilisateurs (nom_uti, prenom_uti, datenaissance_uti, email_uti, password_uti) VALUES (:nom, :prenom, :datenaissance :email, :password)";
         $stmt = $pdo->prepare($sql);  
-        $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':password', $hashedPassword);
         $stmt->bindParam(':nom', $nom);
         $stmt->bindParam(':prenom', $prenom);
+        $stmt->bindParam(':datenaissance', $datenaissance);
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':password', $hashedPassword);
         $stmt->execute();
         $newUser = $pdo->lastInsertId();
         return $newUser;
@@ -35,7 +37,7 @@ class UtilisateurManager
     public static function connectUtilisateur($email, $password)
     {
         $pdo = dbconnect();
-        $sql = "SELECT * FROM utilisateurs WHERE email_uti= :email";
+        $sql = "SELECT * FROM public.utilisateurs WHERE email_uti= :email";
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':email', $email);
         $stmt->execute();

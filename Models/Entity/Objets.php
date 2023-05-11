@@ -4,9 +4,9 @@ class Contact
 {
     private int $idObj;
 
-    private String $nomObj;
-
     private String $imageObj;
+
+    private String $nomObj;
 
     private String $descriptionObj;
 
@@ -17,24 +17,20 @@ class Contact
     private int $idUti;
 
 
-    /* public function __construct(String $nom)
-    {
-        $this->nom = $nom;
-    }*/
-
     // les getteurs
     public function getIdObj(): int
     {
         return $this->idObj;
     }
 
-    public function getNomObj(): String
-    {
-        return $this->nomObj;
-    }
     public function getImageObj(): String
     {
         return $this->imageObj;
+    }
+
+    public function getNomObj(): String
+    {
+        return $this->nomObj;
     }
 
     public function getDesciptionObj(): String
@@ -47,22 +43,43 @@ class Contact
         return $this->disponibiliteObj;
     }
 
-    // les setteurs
-    public function setNomObj($nomObj)
+    public function getIdCat(): int
     {
-        $this->nomObj = $nomObj;
+        return $this->idCat;
     }
+
+    public function getIdUti(): int
+    {
+        return $this->idUti;
+    }
+   // les setteurs
     public function setImageObj($imageObj)
     {
         $this->imageObj = $imageObj;
     }
+
+    public function setNomObj($nomObj)
+    {
+        $this->nomObj = $nomObj;
+    }
+    
     public function setDescriptionObj($descriptionObj)
     {
         $this->descriptionObj = $descriptionObj;
     }
+
     public function setDisponibiliteObj($disponibiliteObj)
     {
         $this->disponibiliteObj = $disponibiliteObj;
     }
 
+    public function setIdCat($idCat)
+    {
+        $this->idCat = $idCat;
+    }
+    
+    public function setIdUti($idUti)
+    {
+        $this->idUti = $idUti;
+    }
 }

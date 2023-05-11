@@ -1,3 +1,5 @@
+/*INSERTION DE QUELQUES JEUX DE DONNEES*/
+
 /* Insertion pour la table categories */
 
 INSERT INTO categories ("nom_cat", "libelle_cat", "code_cat", "valeur_point_cat") 
@@ -16,3 +18,5 @@ INSERT INTO roles ("libelle_rol")
     ('Utilisateur'),
     ('Admin')
 ;
+
+

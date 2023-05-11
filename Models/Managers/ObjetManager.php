@@ -9,7 +9,7 @@ class ObjetManager
     public static function afficheObjets()
     {
         $pdo = dbconnect(); 
-        $sql = "SELECT * FROM objets";
+        $sql = "SELECT * FROM objets INNER JOIN categories ON id_cat = categories.nom_cat";
         $stmt = $pdo->prepare($sql); 
         $stmt->execute(); 
         $results = $stmt->fetchAll(PDO::FETCH_CLASS, 'Objets'); 
@@ -27,12 +27,13 @@ class ObjetManager
         return $result;
     }
 
-    public static function addObjet(String $nomObj, String $description)
+    public static function addObjet(String $nomObj, String $description, String $imageObj)
     {
         $pdo = dbconnect();
-        $sql = "INSERT INTO objets (nom_obj, description_obj) VALUES (:nom, :descriptionObj)";
+        $sql = "INSERT INTO objets (image_obj, nom_obj, description_obj) VALUES (:nomObj, :descriptionObj, :imageObj)";
         $stmt = $pdo->prepare($sql);
-        $stmt->bindParam(':nom', $nomObj);
+        $stmt->bindParam(':imageObj', $imageObj);
+        $stmt->bindParam(':nomObj', $nomObj);
         $stmt->bindParam(':descriptionObj', $description);
         $stmt->execute();
         $newContact = $pdo->lastInsertId();
@@ -48,12 +49,13 @@ class ObjetManager
         $count = $stmt->rowCount();
         print('Vous avez supprimer ' . $count . 'objet(s).');
     }
-    public static function updateObjet($nom, $description)
+    public static function updateObjet($nom, $imageObj, $description)
     {
         $pdo = dbconnect();
-        $sql = "UPDATE objets SET nom_obj= :nom, description_obj= :descriptionObj WHERE nom_obj=:nom";
+        $sql = "UPDATE objets SET nom_obj= :nom, image_obj= :image_obj, description_obj= :descriptionObj WHERE nom_obj=:nom";
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':nom', $nom);
+        $stmt->bindParam(':imageObj', $imageObj);
         $stmt->bindParam(':descriptionObj', $description);
         $stmt->execute();
         $count = $stmt->rowCount();

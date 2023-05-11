@@ -16,7 +16,7 @@ class Utilisateur
 
     private int $pointCumulerUti;
 
-    private int $idAdr;
+    private int $idVil;
 
     private int $idRol;
 
@@ -43,6 +43,11 @@ class Utilisateur
         return $this->prenomUti;
     }
 
+    public function getDatenaissance(): String
+    {
+        return $this->datenaissanceUti;
+    }
+
     public function getEmailUti(): String
     {
         return $this->emailUti;
@@ -53,14 +58,17 @@ class Utilisateur
         return $this->passwordUti;
     }
 
-    public function getDatenaissance(): String
-    {
-        return $this->datenaissanceUti;
-    }
-
     public function getPointCumulerUti(): int
     {
         return $this->pointCumulerUti;
+    }
+    public function getIdVil(): int
+    {
+        return $this->idVil;
+    }
+    public function getIdRol(): int
+    {
+        return $this->idRol;
     }
 
 
@@ -75,6 +83,11 @@ class Utilisateur
         $this->prenomUti = $prenomUti;
     }
 
+    public function setDatenaissanceUti($datenaissanceUti)
+    {
+        $this->datenaissanceUti = $datenaissanceUti;
+    }
+
     public function setEmailUti($emailUti)
     {
         $this->emailUti = $emailUti;
@@ -85,21 +98,24 @@ class Utilisateur
         $this->passwordUti = $passwordUti;
     }
 
-    public function setDatenaissanceUti($datenaissanceUti)
-    {
-        $this->datenaissanceUti = $datenaissanceUti;
-    }
-
     public function setPointCumulerUti($pointCumulerUti)
     {
         $this->pointCumulerUti = $pointCumulerUti;
+    }
+    public function setIdVil($idVil)
+    {
+        $this->idVil = $idVil;
+    }
+    public function setIdRol($idRol)
+    {
+        $this->idRol = $idRol;
     }
 
     // check si le email existe (il retourne 1 si oui)
     public function checkEmail()
     {
         $db = dbconnect();
-        $checkIfExist = $db->prepare('SELECT 1 FROM `utilisateurs` WHERE `email_uti` = ?');
+        $checkIfExist = $db->prepare('SELECT 1 FROM `public.utilisateurs` WHERE `email_uti` = ?');
         $checkIfExist->bindValue(1, $this->emailUti, PDO::PARAM_STR);
         $checkIfExist->execute();
         return  $checkIfExist->fetchColumn();
@@ -109,7 +125,7 @@ class Utilisateur
     public function returnPw()
     {
         $db = dbconnect();
-        $checkIfExist = $db->prepare("SELECT * FROM `utilisateurs` WHERE `email_uti` = ?");
+        $checkIfExist = $db->prepare("SELECT * FROM `public.utilisateurs` WHERE `email_uti` = ?");
         $checkIfExist->bindValue(1, $this->emailUti, PDO::PARAM_STR);
         $checkIfExist->execute();
         $result = $checkIfExist->fetchAll();
