@@ -9,24 +9,26 @@ class UtilisateurManager
     public static function afficheUtilisateur()
     {
         $pdo = dbconnect(); 
-        $sql = "SELECT * FROM public.utilisateurs";
+        $sql = "SELECT * FROM utilisateurs";
         $stmt = $pdo->prepare($sql); 
         $stmt->execute(); 
         $results = $stmt->fetchAll(PDO::FETCH_CLASS, 'Utilisateurs');
         return $results;
     }
 
-    public static function addUtilisateur(String $nom, String $prenom, String $datenaissance, String $email, String $password)
+    public static function addUtilisateur(String $nom, String $prenom, $datenaissance, String $email, String $password, int $ville, int $idRol)
     {
         $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
         $pdo = dbconnect();
-        $sql = "INSERT INTO public.utilisateurs (nom_uti, prenom_uti, datenaissance_uti, email_uti, password_uti) VALUES (:nom, :prenom, :datenaissance :email, :password)";
+        $sql = "INSERT INTO utilisateurs (nom_uti, prenom_uti, datenaissance_uti, email_uti, password_uti, id_vil, id_rol) VALUES (:nom, :prenom, :datenaissance, :email, :password, :idVil, :idRol)";
         $stmt = $pdo->prepare($sql);  
         $stmt->bindParam(':nom', $nom);
         $stmt->bindParam(':prenom', $prenom);
         $stmt->bindParam(':datenaissance', $datenaissance);
         $stmt->bindParam(':email', $email);
         $stmt->bindParam(':password', $hashedPassword);
+        $stmt->bindParam(':idVil', $ville);
+        $stmt->bindParam(':idRol', $idRol);
         $stmt->execute();
         $newUser = $pdo->lastInsertId();
         return $newUser;
@@ -37,20 +39,19 @@ class UtilisateurManager
     public static function connectUtilisateur($email, $password)
     {
         $pdo = dbconnect();
-        $sql = "SELECT * FROM public.utilisateurs WHERE email_uti= :email";
+        $sql = "SELECT * FROM utilisateurs WHERE email_uti= :email";
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':email', $email);
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_CLASS, 'Utilisateurs');
         $user = $stmt->fetch();
         if ($user) {
-            $registeredPassword = $user->getPassword();
+            $registeredPassword = $user->getPasswordUti();
             $verifiedUser = password_verify($password, $registeredPassword);
             if ($verifiedUser) {
-                session_start(); 
-                $_SESSION['utilisateurs'] = [
+                $_SESSION['id_user'] = [
                     'id' => $user->getIdUti(),
-                    'email' => $user->getEmailUti()
+                    //'email' => $user->getEmailUti()
                 ];
             }
         } else {

@@ -15,7 +15,7 @@ require 'partials/header.php';
 </form>
 
 <div>
-    <p>Pas de compte ? Créer-en un : <a class="btn-add" href="Views/registerView.php">ici</a></p>
+    <p>Pas de compte ? Créer-en un : <a class="btn-add" href="index.php?action=register">ici</a></p>
 </div>
 
 <?php

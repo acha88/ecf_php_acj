@@ -9,7 +9,7 @@ class RoleManager
     public static function afficheRole()
     {
         $pdo = dbconnect(); 
-        $sql = "SELECT * FROM roles";
+        $sql = "SELECT * FROM public.roles";
         $stmt = $pdo->prepare($sql); 
         $stmt->execute(); 
         $results = $stmt->fetchAll(PDO::FETCH_CLASS, 'Roles'); 
@@ -20,7 +20,7 @@ class RoleManager
     public static function addRole(String $libelleRol)
     {
         $pdo = dbconnect();
-        $sql = "INSERT INTO roles (libelle_rol) VALUES (:libelleRol)";
+        $sql = "INSERT INTO public.roles (libelle_rol) VALUES (:libelleRol)";
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':libelleRol', $libelleRol);
         $stmt->execute();
@@ -30,7 +30,7 @@ class RoleManager
     public static function deleteRole($id)
     {
         $pdo = dbconnect();
-        $sql = "DELETE FROM roles WHERE id_rol= :id";
+        $sql = "DELETE FROM public.roles WHERE id_rol= :id";
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':id', $id);
         $stmt->execute();
@@ -40,7 +40,7 @@ class RoleManager
     public static function updateRole(String $libelleRol)
     {
         $pdo = dbconnect();
-        $sql = "UPDATE roles SET libelle_rol= :libelleRol WHERE libelle_rol=:libelleRol";
+        $sql = "UPDATE public.roles SET libelle_rol= :libelleRol WHERE libelle_rol=:libelleRol";
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':libelleRol', $libelleRol);
         $stmt->execute();

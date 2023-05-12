@@ -1,26 +1,26 @@
 <?php
 
-class Ville
+class Villes
 {
-    private int $idVil;
+    private int $id_vil;
 
-    private String $nomVil;
+    private String $nom_vil;
 
 
     // les getteurs
     public function getIdVil(): int
     {
-        return $this->idVil;
+        return $this->id_vil;
     }
 
     public function getNomVil(): String
     {
-        return $this->nomVil;
+        return $this->nom_vil;
     }
 
     // les setteurs
     public function setNomVil($nomVil)
     {
-        $this->nomVil = $nomVil;
+        $this->nom_vil = $nomVil;
     }
 }

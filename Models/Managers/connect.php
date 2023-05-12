@@ -2,7 +2,7 @@
 
 function dbconnect()
 {
-    $dsn = "pgsql:host=10.113.28.39;port=5432;dbname=ecf_php_charlotte";
+    $dsn = "pgsql:host=10.113.28.39;port=5432;dbname=charlotte_php_ecf";
     $user = "ajeanvoi";
     $password = "AfpaCDA54";
     try {

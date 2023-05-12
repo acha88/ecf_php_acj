@@ -1,85 +1,85 @@
 <?php
 
-class Contact
+class Objets
 {
-    private int $idObj;
+    private int $id_obj;
 
-    private String $imageObj;
+    private String $image_obj;
 
-    private String $nomObj;
+    private String $nom_obj;
 
-    private String $descriptionObj;
+    private String $description_obj;
 
-    private bool $disponibiliteObj;
+    private bool $disponibilite_obj;
 
-    private int $idCat;
+    private int $id_cat;
 
-    private int $idUti;
+    private int $id_uti;
 
 
     // les getteurs
     public function getIdObj(): int
     {
-        return $this->idObj;
+        return $this->id_obj;
     }
 
     public function getImageObj(): String
     {
-        return $this->imageObj;
+        return $this->image_obj;
     }
 
     public function getNomObj(): String
     {
-        return $this->nomObj;
+        return $this->nom_obj;
     }
 
     public function getDesciptionObj(): String
     {
-        return $this->descriptionObj;
+        return $this->description_obj;
     }
 
     public function getDisponibiliteObj(): bool
     {
-        return $this->disponibiliteObj;
+        return $this->disponibilite_obj;
     }
 
     public function getIdCat(): int
     {
-        return $this->idCat;
+        return $this->id_cat;
     }
 
     public function getIdUti(): int
     {
-        return $this->idUti;
+        return $this->id_uti;
     }
    // les setteurs
     public function setImageObj($imageObj)
     {
-        $this->imageObj = $imageObj;
+        $this->image_obj = $imageObj;
     }
 
     public function setNomObj($nomObj)
     {
-        $this->nomObj = $nomObj;
+        $this->nom_obj = $nomObj;
     }
     
     public function setDescriptionObj($descriptionObj)
     {
-        $this->descriptionObj = $descriptionObj;
+        $this->description_obj = $descriptionObj;
     }
 
     public function setDisponibiliteObj($disponibiliteObj)
     {
-        $this->disponibiliteObj = $disponibiliteObj;
+        $this->disponibilite_obj = $disponibiliteObj;
     }
 
     public function setIdCat($idCat)
     {
-        $this->idCat = $idCat;
+        $this->id_cat = $idCat;
     }
     
     public function setIdUti($idUti)
     {
-        $this->idUti = $idUti;
+        $this->id_uti = $idUti;
     }
 }

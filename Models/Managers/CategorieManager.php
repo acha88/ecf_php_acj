@@ -18,7 +18,7 @@ class CategorieManager
     public static function getCategorieById($id)
     {
         $pdo = dbconnect();
-        $sql = "SELECT * FROM categorie WHERE id_cat=:id";
+        $sql = "SELECT * FROM categories WHERE id_cat=:id";
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':id', $id);
         $stmt->execute();

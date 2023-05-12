@@ -2,54 +2,61 @@
 
 class Categories
 {
-    private int $idCat;
+    private int $id_cat;
 
-    private String $nomCat;
+    private String $nom_cat;
 
-    private String $codeCat;
+    private String $libelle_cat;
 
-    private  int $valeurPointCat;
+    private String $code_cat;
 
+    private  int $valeur_point_cat;
 
-    /* public function __construct(String $nomCat)
-    {
-        $this->nomCat = $nomCat;
-    }*/
 
     // les getteurs
     public function getIdCat(): int
     {
-        return $this->idCat;
+        return $this->id_cat;
     }
 
     public function getNomCat(): String
     {
-        return $this->nomCat;
+        return $this->nom_cat;
+    }
+
+    public function getLibelleCat(): String
+    {
+        return $this->libelle_cat;
     }
 
     public function getCodeCat(): String
     {
-        return $this->codeCat;;
+        return $this->code_cat;;
     }
 
     public function getValeurPointCat(): int
     {
-        return $this->valeurPointCat;
+        return $this->valeur_point_cat;
     }
 
     // les setteurs
     public function setNomCat($nomCat)
     {
-        $this->nomCat = $nomCat;
+        $this->nom_cat = $nomCat;
+    }
+
+    public function setLibelleCat($libelleCat)
+    {
+        $this->libelle_cat = $libelleCat;
     }
 
     public function setCodeCat($codeCat)
     {
-        $this->codeCat = $codeCat;
+        $this->code_cat = $codeCat;
     }
     public function setValeurPointCat($valeurPointCat)
     {
-        $this->valeurPointCat = $valeurPointCat;
+        $this->valeur_point_cat = $valeurPointCat;
     }
 
 }

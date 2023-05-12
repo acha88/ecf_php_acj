@@ -9,7 +9,7 @@ class ObjetManager
     public static function afficheObjets()
     {
         $pdo = dbconnect(); 
-        $sql = "SELECT * FROM objets INNER JOIN categories ON id_cat = categories.nom_cat";
+        $sql = "SELECT * FROM objets";
         $stmt = $pdo->prepare($sql); 
         $stmt->execute(); 
         $results = $stmt->fetchAll(PDO::FETCH_CLASS, 'Objets'); 
@@ -27,17 +27,20 @@ class ObjetManager
         return $result;
     }
 
-    public static function addObjet(String $nomObj, String $description, String $imageObj)
+    public static function addObjet(String $nomObj, String $imageObj, String $descriptionObj, bool $disponibiliteObj, int $categorie, int $idUti)
     {
         $pdo = dbconnect();
-        $sql = "INSERT INTO objets (image_obj, nom_obj, description_obj) VALUES (:nomObj, :descriptionObj, :imageObj)";
+        $sql = "INSERT INTO objets (nom_obj, image_obj, description_obj, disponibilite_obj, id_cat, id_uti) VALUES (:nomObj, :imageObj, :descriptionObj, :disponibiliteObj, :idCat, :idUti)";
         $stmt = $pdo->prepare($sql);
-        $stmt->bindParam(':imageObj', $imageObj);
         $stmt->bindParam(':nomObj', $nomObj);
-        $stmt->bindParam(':descriptionObj', $description);
+        $stmt->bindParam(':imageObj', $imageObj);
+        $stmt->bindParam(':descriptionObj', $descriptionObj);
+        $stmt->bindParam(':disponibiliteObj', $disponibiliteObj);
+        $stmt->bindParam(':idCat', $categorie);
+        $stmt->bindParam(':idUti', $idUti);
         $stmt->execute();
-        $newContact = $pdo->lastInsertId();
-        return $newContact;
+        $newObjet = $pdo->lastInsertId();
+        return $newObjet;
     }
     public static function deleteObjet($id)
     {
@@ -49,14 +52,14 @@ class ObjetManager
         $count = $stmt->rowCount();
         print('Vous avez supprimer ' . $count . 'objet(s).');
     }
-    public static function updateObjet($nom, $imageObj, $description)
+    public static function updateObjet($nom, $imageObj, $descriptionObj)
     {
         $pdo = dbconnect();
         $sql = "UPDATE objets SET nom_obj= :nom, image_obj= :image_obj, description_obj= :descriptionObj WHERE nom_obj=:nom";
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':nom', $nom);
         $stmt->bindParam(':imageObj', $imageObj);
-        $stmt->bindParam(':descriptionObj', $description);
+        $stmt->bindParam(':descriptionObj', $descriptionObj);
         $stmt->execute();
         $count = $stmt->rowCount();
         print('Vous avez mis à jour ' . $count . 'objet(s).');

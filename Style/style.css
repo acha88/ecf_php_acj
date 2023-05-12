@@ -1,6 +1,7 @@
 *{
     margin: 0;
     padding: 0;
+    color: black;
 }
 a {
     text-decoration: none;
@@ -15,23 +16,26 @@ footer {
 main {
     height: 74vh;
 }
-.crudContact {
-    display: flex;
-    flex-direction: row;
-}
 
 .btn-add {
     color: black;
     padding: 1%;
     margin-left: 5%;
 }
-.contact_card {
+._article {
     display: flex;
     flex-wrap: wrap;
 }
-
-._card {
+.card {
     padding: 2%;
     border: 2px black solid;
-    margin: 5% 2%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    margin-right: 5%;
+    margin-left: 2%;
+    width: 20%;
+    box-shadow: 10px 5px 5px rgb(65, 64, 64);
+}
+.hidden {
+    visibility: hidden;
 }

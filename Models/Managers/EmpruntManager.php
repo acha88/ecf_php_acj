@@ -27,14 +27,16 @@ class EmpruntManager
         return $result;
     }
 
-    public static function reservation(String $dateDebutEmps, String $dateFinEmps, bool $rendu)
+    public static function reservation($dateDebutEmps, $dateFinEmps, bool $rendu, int $idUti, int $idObj)
     {
         $pdo = dbconnect();
-        $sql = "INSERT INTO emprunts (date_debut_emps, date_fin_emps, rendu) VALUES (:dateDebutEmps, :dateFinEmps, :rendu)";
+        $sql = "INSERT INTO emprunts (date_debut_emps, date_fin_emps, rendu, id_uti, id_obj) VALUES (:dateDebutEmps, :dateFinEmps, :rendu, :idUti, :idObj)";
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':dateDebutEmps', $dateDebutEmps);
         $stmt->bindParam(':dateFinEmps', $dateFinEmps);
         $stmt->bindParam(':rendu', $rendu);
+        $stmt->bindParam(':idUti', $idUti);
+        $stmt->bindParam(':idObj', $idObj);
         $stmt->execute();
         $newContact = $pdo->lastInsertId();
         return $newContact;

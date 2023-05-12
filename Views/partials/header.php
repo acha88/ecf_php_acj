@@ -13,7 +13,19 @@
     <header>
         <h1>Le service MY LOC</h1>
         <nav>
-            <a href="">Se connecter</a>
-            <a href="">Contact</a>
+            <!-- 
+            // gestion -> a farire 
+            /*if($_SESSION['id_user'] === 'admin') {
+                echo "<a href='gestion.php'>GESTIONNAIRE</a>";
+            }*/
+            -->
+            <a href='index.php'>Produit</a>
+            <a href="index.php?action=add">Ajouter un produit</a>
+            <a href="index.php?action=emprunt">Emprunter</a>
+            <?php if ($_SESSION['id_user']) : ?>
+                <a href="index.php?action=logout">Deconnexion </a>
+            <?php else : ?>
+            <a href="index.php?action=login">Se connecter</a>
+            <?php endif ?>
         </nav>
     </header>

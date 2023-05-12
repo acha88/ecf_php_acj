@@ -1,122 +1,117 @@
 <?php
 
-class Utilisateur
+class Utilisateurs
 {
-    private int $idUti;
+    private int $id_uti;
 
-    private String $emailUti;
+    private String $nom_uti;
 
-    private String $passwordUti;
+    private String $prenom_uti;
 
-    private String $nomUti;
+    private String $datenaissance_uti;
 
-    private String $prenomUti;
+    private String $email_uti;
 
-    private String $datenaissanceUti;
+    private String $password_uti;
 
-    private int $pointCumulerUti;
 
-    private int $idVil;
+    private ?int $point_cumuler_uti;
 
-    private int $idRol;
+    private int $id_vil;
 
-    /* public function __construct(String $emailUti, String $passwordUti)
-    {
-        $this->emailUti = $emailUti;
-        $this->passwordUti = $passwordUti;
-    }*/
+    private int $id_rol;
 
 
     // les getteurs 
     public function getIdUti(): int
     {
-        return $this->idUti;
+        return $this->id_uti;
     }
 
     public function getNomUti(): String
     {
-        return $this->nomUti;
+        return $this->nom_uti;
     }
 
     public function getPrenomUti(): String
     {
-        return $this->prenomUti;
+        return $this->prenom_uti;
     }
 
     public function getDatenaissance(): String
     {
-        return $this->datenaissanceUti;
+        return $this->datenaissance_uti;
     }
 
     public function getEmailUti(): String
     {
-        return $this->emailUti;
+        return $this->email_uti;
     }
 
     public function getPasswordUti(): String
     {
-        return $this->passwordUti;
+        return $this->password_uti;
     }
 
     public function getPointCumulerUti(): int
     {
-        return $this->pointCumulerUti;
+        return $this->point_cumuler_uti;
     }
     public function getIdVil(): int
     {
-        return $this->idVil;
+        return $this->id_vil;
     }
     public function getIdRol(): int
     {
-        return $this->idRol;
+        return $this->id_rol;
     }
 
 
     // les setteurs 
     public function setNomUti($nomUti)
     {
-        $this->nomUti = $nomUti;
+        $this->nom_uti = $nomUti;
     }
 
     public function setPrenomUti($prenomUti)
     {
-        $this->prenomUti = $prenomUti;
+        $this->prenom_uti = $prenomUti;
     }
 
     public function setDatenaissanceUti($datenaissanceUti)
     {
-        $this->datenaissanceUti = $datenaissanceUti;
+        $this->datenaissance_uti = $datenaissanceUti;
     }
 
     public function setEmailUti($emailUti)
     {
-        $this->emailUti = $emailUti;
+        $this->email_uti = $emailUti;
     }
 
     public function setPasswordUti($passwordUti)
     {
-        $this->passwordUti = $passwordUti;
+        $this->password_uti = $passwordUti;
     }
 
     public function setPointCumulerUti($pointCumulerUti)
     {
-        $this->pointCumulerUti = $pointCumulerUti;
+        $this->point_cumuler_uti = $pointCumulerUti;
     }
     public function setIdVil($idVil)
     {
-        $this->idVil = $idVil;
+        $this->id_vil = $idVil;
     }
     public function setIdRol($idRol)
     {
-        $this->idRol = $idRol;
+        $this->id_rol = $idRol;
     }
 
     // check si le email existe (il retourne 1 si oui)
     public function checkEmail()
     {
         $db = dbconnect();
-        $checkIfExist = $db->prepare('SELECT 1 FROM `public.utilisateurs` WHERE `email_uti` = ?');
-        $checkIfExist->bindValue(1, $this->emailUti, PDO::PARAM_STR);
+        $checkIfExist = $db->prepare('SELECT 1 FROM `utilisateurs` WHERE `email_uti` = ?');
+        $checkIfExist->bindValue(1, $this->email_uti, PDO::PARAM_STR);
         $checkIfExist->execute();
         return  $checkIfExist->fetchColumn();
     }
@@ -125,8 +120,8 @@ class Utilisateur
     public function returnPw()
     {
         $db = dbconnect();
-        $checkIfExist = $db->prepare("SELECT * FROM `public.utilisateurs` WHERE `email_uti` = ?");
-        $checkIfExist->bindValue(1, $this->emailUti, PDO::PARAM_STR);
+        $checkIfExist = $db->prepare("SELECT * FROM `utilisateurs` WHERE `email_uti` = ?");
+        $checkIfExist->bindValue(1, $this->email_uti, PDO::PARAM_STR);
         $checkIfExist->execute();
         $result = $checkIfExist->fetchAll();
         return $result['password_uti'];

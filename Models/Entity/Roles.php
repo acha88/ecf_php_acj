@@ -1,26 +1,26 @@
 <?php
 
-class Ville
+class Roles
 {
-    private int $idRol;
+    private int $id_rol;
 
-    private String $libelleRol;
+    private String $libelle_rol;
 
 
     // les getteurs
     public function getIdRol(): int
     {
-        return $this->idRol;
+        return $this->id_rol;
     }
 
     public function getLibelleRol(): String
     {
-        return $this->libelleRol;
+        return $this->libelle_rol;
     }
 
     // les setteurs
     public function setLibelleRol($libelleRol)
     {
-        $this->libelleRol= $libelleRol;
+        $this->libelle_rol= $libelleRol;
     }
 }

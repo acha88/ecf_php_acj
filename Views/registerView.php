@@ -32,8 +32,12 @@ require 'partials/header.php';
     <fieldset>
         <legend>Votre adresse</legend>
         <div>
-            <label for="nom_ville">Le nom de votre ville</label>
-            <input type="text" name="nom_ville" id="nom_ville">
+            <label for="nom_vil">Le nom de votre ville</label>
+            <select name="nom_vil" id="nom_vil">
+                <?php foreach($resultat as $ville) { ?>
+                    <option value="<?php echo $ville->getIdVil(); ?>"><?php echo $ville->getNomVil(); ?></option>   
+                <?php } ?>
+            </select>
         </div>
     </fieldset>
     <p>Ne jamais partager vos données avec une autre personne.</p>

@@ -11,6 +11,10 @@ $objet = ObjetManager::getObjetById($_GET["id"]);
         <td><?= $id ?></td>
     </tr>
     <tr>
+        <td>Image :</td>
+        <td><?= $objet->getImageObj() ?></td>
+    </tr>
+    <tr>
         <td>Nom :</td>
         <td><?= $objet->getNomObj() ?></td>
     </tr>
@@ -22,15 +26,12 @@ $objet = ObjetManager::getObjetById($_GET["id"]);
         <td>Disponibilité :</td>
         <td><?= $objet->getDisponibiliteObj() ?></td>
     </tr>
-    <!--
     <tr>
         <td>Options :</td>
         <td>
-            <button><a class="btn-add" href="deleteContact.php?id=/ < ?php echo $contact->getId() ?>">Supprime le produit</a></button>
-            <button><a class="btn-add" href="updateContact.php">Mettre à jour le produit</a></button>
+            <button><a class="btn-add" href="index.php?action=emprunt">Réserver</a></button>
         </td>
     </tr>
-    -->
 </table>
 
 

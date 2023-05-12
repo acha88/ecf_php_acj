@@ -2,7 +2,7 @@
 Creation BDD PSQL sur le serveur
 */
 /* en PSQL */ 
-CREATE DATABASE ecf_php_charlotte;
+CREATE DATABASE charlotte_php_ecf;
 
 CREATE TABLE roles(
     id_rol SERIAL,
@@ -14,7 +14,7 @@ CREATE TABLE categories(
    id_cat SERIAL,
    nom_cat VARCHAR(50) NOT NULL,
    libelle_cat VARCHAR(250) NOT NULL,
-   code_cat DECIMAL(10,0) NOT NULL,
+   code_cat VARCHAR(10) NOT NULL,
    valeur_point_cat DECIMAL(5,0),
    PRIMARY KEY(id_cat)
 );
@@ -44,7 +44,7 @@ CREATE TABLE utilisateurs(
 CREATE TABLE objets(
     id_obj SERIAL,
     nom_obj VARCHAR(50) NOT NULL,
-    image_obj VARCHAR(250),
+    image_obj VARCHAR(255),
     description_obj TEXT NOT NULL,
     disponibilite_obj boolean NOT NULL,
     id_cat INT NOT NULL,

@@ -2,34 +2,34 @@
 
 class Emprunts
 {
-    private int $idEmps;
+    private int $id_emps;
 
-    private String $dateDebutEmps;
+    private String $date_debut_emps;
 
-    private String $dateFinEmps;
+    private String $date_fin_emps;
 
     private bool $rendu;
 
-    private int $idUti;
+    private int $id_uti;
 
-    private int $idObj;
+    private int $id_obj;
 
 
 
     // les getteurs 
     public function getIdEmps(): int
     {
-        return $this->idEmps;
+        return $this->id_emps;
     }
 
     public function getDateDebutEmps(): String
     {
-        return $this->dateDebutEmps;
+        return $this->date_debut_emps;
     }
 
     public function getDateFinEmps(): String
     {
-        return $this->dateFinEmps;
+        return $this->date_fin_emps;
     }
 
     public function getRendu(): bool
@@ -39,24 +39,24 @@ class Emprunts
 
     public function getIdUti(): int
     {
-        return $this->idUti;
+        return $this->id_uti;
     }
 
     public function getIdObj(): int
     {
-        return $this->idObj;
+        return $this->id_obj;
     }
 
 
     // les setteurs 
     public function setDateDebutEmps($dateDebutEmps)
     {
-        $this->dateDebutEmps =$dateDebutEmps;
+        $this->date_debut_emps =$dateDebutEmps;
     }
 
     public function setDateFinEmps($dateFinEmps)
     {
-        $this->dateFinEmps = $dateFinEmps;
+        $this->date_fin_emps = $dateFinEmps;
     }
 
     public function setRendu($rendu)
@@ -66,11 +66,11 @@ class Emprunts
 
     public function setIdUti($idUti)
     {
-        $this->idUti = $idUti;
+        $this->id_uti = $idUti;
     }
 
     public function setIdObj($idObj)
     {
-        $this->idObj = $idObj;
+        $this->id_obj = $idObj;
     }
 }
